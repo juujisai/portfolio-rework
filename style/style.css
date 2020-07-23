@@ -949,15 +949,6 @@ footer a {
 
 
 
-  @keyframes moveBefore {
-
-    to {
-      left: -115%
-    }
-  }
-
-
-
   .big-screen {
     position: absolute;
     left: 0%;
