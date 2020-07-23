@@ -961,7 +961,7 @@ footer a {
   }
 
   .big-screen:hover {
-    left: -50%;
+    transform: translateX(-50%);
   }
 
 
