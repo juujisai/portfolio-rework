@@ -74,65 +74,6 @@ const navigation = () => {
 
 
 
-const aboutInfo = () => {
-  const info = ['bartosz', 'cylwik', 'front-end developer', 'mgr inż.']
-
-  const infoDestination = []
-  infoDestination.push(document.querySelector('.first-name span'))
-  infoDestination.push(document.querySelector('.last-name span'))
-  infoDestination.push(document.querySelector('.job span'))
-  infoDestination.push(document.querySelector('.degree span'))
-
-  let counter = 0;
-  let type = 0
-  let content1 = ''
-
-  const addLetterFunction = () => {
-    // counter = 0
-
-    if (counter < info[type].length) {
-      content1 += info[type][counter]
-      infoDestination[type].textContent = content1
-    }
-
-
-    counter++;
-
-
-    if (counter === info[type].length) {
-
-      type++
-      counter = 0
-
-      content1 = ''
-
-    }
-
-    if (type >= info.length) {
-      // type = 0
-      clearInterval(interval);
-      setTimeout(function () {
-        type = 0
-
-        infoDestination.forEach(one => one.textContent = '')
-        interval = setInterval(addLetterFunction, 200)
-      }, 5000)
-
-    }
-
-  }
-
-
-  let interval = setInterval(addLetterFunction, 200)
-
-
-
-  // console.log(infoDestination)
-
-}
-
-
-
 
 
 
@@ -297,7 +238,6 @@ const showEmailAsAlert = () => {
 
 test()
 navigation()
-aboutInfo()
 svgIcons()
 dualImagesAnimation()
 cursorMove()

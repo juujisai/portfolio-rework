@@ -127,18 +127,3 @@ const svgCart = [svgCartImagesJS, svgCartImagesHTML, svgCartImagesCSS, svgCartIm
 
 
 
-
-const svgBackground = `<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 806 107" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><path d="M3,103c29.222,-0.333 66.667,-100 100,-100c33.333,0 66.667,100 100,100c33.333,0 66.667,-100 100,-100c33.333,0 66.667,100 100,100c33.333,0 66.667,-100 100,-100c33.333,0 66.667,100 100,100c33.333,0 66.667,-100 100,-100c33.333,0 58.778,100.667 100,100" style="fill:none;stroke:#ff0000;stroke-width:3px;"/></svg>`
-
-
-
-const moveTheSpiral = () => {
-
-  const path = document.querySelector('.spiral')
-
-  path.innerHTML = svgBackground + svgBackground + svgBackground + svgBackground + svgBackground
-
-}
-
-
-moveTheSpiral()

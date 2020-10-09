@@ -1058,7 +1058,7 @@ footer a {
   }
 
   body {
-    cursor: none;
+    cursor: crosshair;
   }
 
   .circle {
@@ -1074,8 +1074,8 @@ footer a {
     border-radius: 50%;
     pointer-events: none;
     z-index: 25;
-    transition: .3s linear;
-    transition-property: width, height;
+    transition: width .3s linear, height .3s linear;
+    /* transition-property: width, height; */
   }
 
   a {
