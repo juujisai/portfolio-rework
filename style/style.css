@@ -47,7 +47,7 @@ header {
   position: absolute;
   left: 0;
   top: 70%;
-  width: 80%;
+  width: 100%;
   padding: 30px 0;
   background-color: rgba(0, 0, 0, .8);
   font-family: 'Cantarell', sans-serif;
@@ -145,7 +145,7 @@ nav.mobile-nav {
 
 section {
   margin: 50px auto;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .section h2 {
@@ -163,8 +163,15 @@ section {
 .cart-cont {
   position: relative;
   margin-top: 40px;
-  width: 80%;
+  width: 90%;
   /* min-height: 70vh; */
+}
+
+h2.name {
+  padding: 20px 10px;
+  color: #fbf7f0;
+
+  background-color: #0f3057;
 }
 
 .cart {
@@ -181,6 +188,7 @@ section {
   overflow: hidden;
   border: 2px solid transparent;
   border-radius: 2%;
+  border: 2px solid #0f3057;
   box-shadow: 0px 4px 4px white, 0px 4px 4px white;
 }
 
@@ -196,6 +204,7 @@ section {
   padding: 5px 20px;
   border-bottom: 2px solid black;
   letter-spacing: 2px;
+  color: #0f3057;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -234,13 +243,14 @@ section {
   position: relative;
   width: 100%;
   margin: 50px 0;
+  background-color: #fff;
 }
 
 .big-screen {
   width: 100%;
-  height: 35%;
+  height: 45%;
   transition: .3s;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .big-screen img,

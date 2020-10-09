@@ -117,40 +117,40 @@ const svgIcons = () => {
 }
 
 
-const dualImagesAnimation = function () {
+// const dualImagesAnimation = function () {
 
-  const dualImagesLeft = [...document.querySelectorAll('.image1')]
-  const dualImagesRight = [...document.querySelectorAll('.image2')]
+//   const dualImagesLeft = [...document.querySelectorAll('.image1')]
+//   const dualImagesRight = [...document.querySelectorAll('.image2')]
 
-  const equalize = function (e) {
-    let index;
+//   const equalize = function (e) {
+//     let index;
 
-    this.classList.contains('image1') ? index = dualImagesLeft.findIndex(image => image === this) : index = dualImagesRight.findIndex(image => image === this)
+//     this.classList.contains('image1') ? index = dualImagesLeft.findIndex(image => image === this) : index = dualImagesRight.findIndex(image => image === this)
 
-    if (e.type === 'mouseover' || e.type === 'touchstart') {
-      dualImagesLeft[index].classList.add('equalize')
-      dualImagesRight[index].classList.add('equalize')
-    } else if (e.type === 'mouseout' || e.type === 'touchend') {
-      dualImagesLeft[index].classList.remove('equalize')
-      dualImagesRight[index].classList.remove('equalize')
-    }
+//     if (e.type === 'mouseover' || e.type === 'touchstart') {
+//       dualImagesLeft[index].classList.add('equalize')
+//       dualImagesRight[index].classList.add('equalize')
+//     } else if (e.type === 'mouseout' || e.type === 'touchend') {
+//       dualImagesLeft[index].classList.remove('equalize')
+//       dualImagesRight[index].classList.remove('equalize')
+//     }
 
-  }
+//   }
 
-  dualImagesLeft.forEach((imageLeft, id) => {
-    imageLeft.addEventListener('mouseover', equalize)
-    imageLeft.addEventListener('mouseout', equalize)
-    imageLeft.addEventListener('touchstart', equalize)
-    imageLeft.addEventListener('touchend', equalize)
-  })
+//   dualImagesLeft.forEach((imageLeft, id) => {
+//     imageLeft.addEventListener('mouseover', equalize)
+//     imageLeft.addEventListener('mouseout', equalize)
+//     imageLeft.addEventListener('touchstart', equalize)
+//     imageLeft.addEventListener('touchend', equalize)
+//   })
 
-  dualImagesRight.forEach((imageRight, id) => {
-    imageRight.addEventListener('mouseover', equalize)
-    imageRight.addEventListener('mouseout', equalize)
-    imageRight.addEventListener('touchstart', equalize)
-    imageRight.addEventListener('touchend', equalize)
-  })
-}
+//   dualImagesRight.forEach((imageRight, id) => {
+//     imageRight.addEventListener('mouseover', equalize)
+//     imageRight.addEventListener('mouseout', equalize)
+//     imageRight.addEventListener('touchstart', equalize)
+//     imageRight.addEventListener('touchend', equalize)
+//   })
+// }
 
 
 
@@ -207,6 +207,6 @@ const showEmailAsAlert = () => {
 
 navigation()
 svgIcons()
-dualImagesAnimation()
+// dualImagesAnimation()
 cursorMove()
 showEmailAsAlert()
