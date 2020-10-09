@@ -246,54 +246,43 @@ h2.name {
   background-color: #fff;
 }
 
-.big-screen {
+.short-project {
+  position: relative;
   width: 100%;
-  height: 45%;
-  transition: .3s;
-  padding-bottom: 30px;
+  height: 50vh;
+  border-top: 2px solid #0f3057;
+  border-bottom: 2px solid #0f3057;
 }
 
-.big-screen img,
-.image1 img,
-.image2 img {
+.short-project h3 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  transform: translate(-50%, -50%);
+  background-color: rgba(15, 48, 87, .8);
+  color: white;
+}
+
+.project-name {
+  margin-bottom: 10px;
+}
+
+
+.big-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-.image1 {
-  border: 2px solid black;
-  border-right: none
-}
-
-.image2 {
-  border: 2px solid black;
-  border-left: none
-}
-
-.image1,
-.image2 {
-  position: absolute;
-  width: 40%;
-  height: 25%;
-  z-index: 2;
-  transition: .2s linear;
-  overflow: hidden;
-}
-
-.image1 {
-  top: 18%;
-  left: 10%;
-  background-color: darkred;
-}
-
-.image2 {
-  top: 22%;
-  left: 50%;
-  background-color: rgb(206, 79, 79);
-}
-
-.equalize {
-  top: 20%
+.big-screen img {
+  width: 100%;
+  height: 100%;
 }
 
 .about-project {
@@ -301,15 +290,52 @@ h2.name {
   flex-direction: column;
   justify-content: space-around;
 
-  padding: 30px 20px;
   width: 100%;
-
+  max-height: 0;
+  transition: .3s;
   background-color: #fff;
+  overflow: hidden;
 }
 
-.project-name {
-  margin-bottom: 10px;
+.about-project.show {
+  max-height: 500vh;
+  padding: 20px 5%;
+
 }
+
+.photo-gallery {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+  height: 40vh;
+}
+
+.arrow-left {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translate(0, -50%) rotate(-90deg);
+  font-size: 3em;
+}
+
+.arrow-right {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translate(0, -50%) rotate(90deg);
+  font-size: 3em;
+}
+
+.photo-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.github-link a {
+  color: #0f3057
+}
+
 
 .icons {
   display: flex;

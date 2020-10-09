@@ -205,6 +205,72 @@ const showEmailAsAlert = () => {
 }
 
 
+const showMoreInfo = () => {
+  const projects = [...document.querySelectorAll('.short-project')]
+  const projectsInfo = [...document.querySelectorAll('.about-project')]
+
+  projects.forEach(item => item.addEventListener('click', function () {
+    projectsInfo[projects.findIndex(item2 => item2 === item)].classList.toggle('show')
+  }))
+
+  let activePhotos = {
+    geoportal: 0,
+    graphs: 0,
+  }
+
+  const photoGallery1 = document.querySelector('.geoportal-gallery')
+  const geoportalImages = ['../images/geoportal1.jpg', '../images/geoportal2.jpg', '../images/geoportal3.jpg', '../images/geoportal4.jpg']
+  photoGallery1.src = geoportalImages[activePhotos.geoportal]
+
+
+  const photoGallery2 = document.querySelector('.graph-gallery')
+  const graphImages = ['../images/wykresy1.jpg', '../images/wykresy2.jpg', '../images/wykresy3.jpg', '../images/wykresy4.jpg']
+  photoGallery2.src = graphImages[activePhotos.graphs]
+
+
+
+
+  const leftArrow = [...document.querySelectorAll('.arrow-left')]
+
+  leftArrow.forEach(item => item.addEventListener('click', function () {
+    let parent = this.parentNode
+
+    parent.classList.contains('geoportal') ? activePhotos.geoportal = activePhotos.geoportal - 1 : null
+    activePhotos.geoportal < 0 ? activePhotos.geoportal = geoportalImages.length - 1 : null
+
+    parent.classList.contains('graphs') ? activePhotos.graphs = activePhotos.graphs - 1 : null
+    activePhotos.graphs < 0 ? activePhotos.graphs = graphImages.length - 1 : null
+
+
+    photoGallery1.src = geoportalImages[activePhotos.geoportal]
+    photoGallery2.src = graphImages[activePhotos.graphs]
+
+  }))
+
+
+  const rightArrow = [...document.querySelectorAll('.arrow-right')]
+
+  rightArrow.forEach(item => item.addEventListener('click', function () {
+    let parent = this.parentNode
+
+    parent.classList.contains('geoportal') ? activePhotos.geoportal = activePhotos.geoportal + 1 : null
+    activePhotos.geoportal > geoportalImages.length - 1 ? activePhotos.geoportal = 0 : null
+
+    parent.classList.contains('graphs') ? activePhotos.graphs = activePhotos.graphs + 1 : null
+    activePhotos.graphs > graphImages.length - 1 ? activePhotos.graphs = 0 : null
+
+
+    photoGallery1.src = geoportalImages[activePhotos.geoportal]
+    photoGallery2.src = graphImages[activePhotos.graphs]
+
+  }))
+
+
+
+}
+
+
+showMoreInfo()
 navigation()
 svgIcons()
 // dualImagesAnimation()
