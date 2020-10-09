@@ -6,7 +6,26 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #fbf7f0;
 }
+
+#canvas,
+#canvas2 {
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+
+#canvas {
+  z-index: 1;
+}
+
+#canvas2 {
+  opacity: 0;
+  z-index: 2;
+  transition: 1s;
+}
+
 
 .wrap {
   width: 100%;
@@ -16,65 +35,6 @@ html {
 
 }
 
-.spiral {
-  background-color: #181818;
-  position: fixed;
-  width: 200%;
-  height: 100%;
-  z-index: -1;
-}
-
-.spiral svg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%) scaleX(2);
-  filter: hue-rotate(180deg);
-
-}
-
-.spiral svg:nth-of-type(1) {
-  transform: translate(-50%, -50%) scaleX(2)scaleY(1);
-  animation: spiral 2s linear infinite
-}
-
-.spiral svg:nth-of-type(2) {
-  transform: translate(-50%, -50%) scaleX(2)scaleY(3);
-  animation: spiral 3s linear infinite;
-}
-
-.spiral svg:nth-of-type(3) {
-  transform: translate(-50%, -50%) scaleX(2)scaleY(4);
-  animation: spiral 4s linear infinite;
-}
-
-.spiral svg:nth-of-type(4) {
-  transform: translate(-50%, -50%) scaleX(2)scaleY(5);
-  animation: spiral 5s linear infinite;
-}
-
-.spiral svg:nth-of-type(5) {
-  transform: translate(-50%, -50%) scaleX(2)scaleY(6);
-  animation: spiral 6s linear infinite;
-}
-
-@keyframes spiral {
-  0% {
-    left: 50%;
-    opacity: .05;
-  }
-
-  50% {
-    opacity: .1;
-  }
-
-  100% {
-    left: 100%;
-    opacity: .05;
-  }
-}
 
 header,
 .headerAnimation {
@@ -105,8 +65,9 @@ img.header-main-img,
   top: 70%;
   width: 80%;
   padding: 30px 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .8);
   font-family: 'Cantarell', sans-serif;
+  z-index: 3;
 }
 
 .info-what {
