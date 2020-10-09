@@ -1,28 +1,3 @@
-
-
-
-const test = () => {
-
-  const animationDuration = 60000 / 2
-
-  const svgHeader = document.querySelector('.fil-pod-svg')
-  const imgHeader = document.querySelector('.header-main-img')
-  const windowWidth = window.innerWidth
-  const svgWidth = -1 * window.innerHeight / 0.745 + windowWidth / 2
-  const imgWidth = -1 * window.innerHeight / 0.25 + windowWidth
-
-  svgHeader.style.right = `${svgWidth}px`
-  imgHeader.style.right = `${imgWidth}px`
-  let flag = true
-
-  setInterval(function () {
-    flag ? svgHeader.src = './svg/fil-pod-svg.svg' : svgHeader.src = './svg/fil-pod-svg2.svg'
-    flag = !flag
-  }, animationDuration)
-
-}
-
-
 const navigation = () => {
   //hamburger
   const navText = document.querySelector('nav.mobile-nav')
@@ -47,7 +22,6 @@ const navigation = () => {
   let navElementsArray = document.getElementById('header')
   let navSectionsArray = [...document.querySelectorAll('section')]
   navElementsArray = [navElementsArray, ...navSectionsArray]
-
   let navElementsOffsetArray = []
 
   navElementsArray.forEach(element => { navElementsOffsetArray.push(element.offsetTop) })
@@ -55,17 +29,12 @@ const navigation = () => {
   window.addEventListener('scroll', function () {
     let scrollValue = window.scrollY
 
-    navElementsOffsetArray[0] <= scrollValue && scrollValue + 20 < navElementsOffsetArray[1] ? navArray[0].classList.add('active') : navArray[0].classList.remove('active')
-
-    navElementsOffsetArray[1] <= scrollValue + 20 && scrollValue + 20 < navElementsOffsetArray[2] ? navArray[1].classList.add('active') : navArray[1].classList.remove('active')
-
-    navElementsOffsetArray[2] <= scrollValue + 20 && scrollValue + 20 < navElementsOffsetArray[3] ? navArray[2].classList.add('active') : navArray[2].classList.remove('active')
-
-    navElementsOffsetArray[3] <= scrollValue + 20 && scrollValue + 20 < navElementsOffsetArray[4] ? navArray[3].classList.add('active') : navArray[3].classList.remove('active')
-
-    navElementsOffsetArray[4] <= scrollValue ? navArray[4].classList.add('active') : navArray[4].classList.remove('active')
-
-    // console.log(scrollValue, navElementsOffsetArray)
+    navElementsArray.forEach((item, id) => {
+      if (item.offsetTop <= scrollValue + 20) {
+        navArray.forEach(item => item.classList.remove('active'))
+        navArray[id].classList.add('active')
+      }
+    })
 
   })
 
@@ -236,7 +205,6 @@ const showEmailAsAlert = () => {
 }
 
 
-test()
 navigation()
 svgIcons()
 dualImagesAnimation()
