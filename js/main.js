@@ -218,54 +218,117 @@ const showMoreInfo = () => {
     graphs: 0,
   }
 
-  const photoGallery1 = document.querySelector('.geoportal-gallery')
-  const geoportalImages = ['../images/geoportal1.jpg', '../images/geoportal2.jpg', '../images/geoportal3.jpg', '../images/geoportal4.jpg']
-  photoGallery1.src = geoportalImages[activePhotos.geoportal]
+  // const photoGallery1 = document.querySelector('.geoportal-gallery')
+  let project1Images = [...document.querySelectorAll('.photo-gallery.geoportal img')]
+  const perProj1 = 15 / (project1Images.length - 1)
 
-
-  const photoGallery2 = document.querySelector('.graph-gallery')
-  const graphImages = ['../images/wykresy1.jpg', '../images/wykresy2.jpg', '../images/wykresy3.jpg', '../images/wykresy4.jpg']
-  photoGallery2.src = graphImages[activePhotos.graphs]
-
+  project1Images.forEach((item, id) => {
+    item.style.transform = `translate(${id * perProj1}%, ${id * perProj1}%)`
+    item.style.zIndex = project1Images.length - id
+  }
+  )
+  // const photoGallery2 = document.querySelector('.graph-gallery')
+  let project2Images = [...document.querySelectorAll('.photo-gallery.graphs img')]
+  const perProj2 = 15 / (project2Images.length - 1)
+  // console.log(project2Images)
+  project2Images.forEach((item, id) => {
+    item.style.transform = `translate(${id * perProj2}%, ${id * perProj2}%)`
+    item.style.zIndex = project2Images.length - id
+  }
+  )
 
 
 
   const leftArrow = [...document.querySelectorAll('.arrow-left')]
 
-  leftArrow.forEach(item => item.addEventListener('click', function () {
-    let parent = this.parentNode
-
-    parent.classList.contains('geoportal') ? activePhotos.geoportal = activePhotos.geoportal - 1 : null
-    activePhotos.geoportal < 0 ? activePhotos.geoportal = geoportalImages.length - 1 : null
-
-    parent.classList.contains('graphs') ? activePhotos.graphs = activePhotos.graphs - 1 : null
-    activePhotos.graphs < 0 ? activePhotos.graphs = graphImages.length - 1 : null
 
 
-    photoGallery1.src = geoportalImages[activePhotos.geoportal]
-    photoGallery2.src = graphImages[activePhotos.graphs]
+  const prevPhoto = function () {
+    const parent = this.parentNode
 
-  }))
+    let gallery;
+
+    if (parent.classList.contains('graphs')) {
+      gallery = project2Images
+    } else if (parent.classList.contains('geoportal')) {
+      gallery = project1Images
+
+    }
+
+    gallery[gallery.length - 1].style.zIndex = gallery.length + 1
+
+    gallery[gallery.length - 1].style.transform = `translate(0%, -20%)`
+
+    leftArrow.forEach(item => item.removeEventListener('click', prevPhoto))
+    let current = gallery[gallery.length - 1]
+    gallery.splice(gallery.length - 1, 1)
+    gallery = [current, ...gallery,]
+
+    setTimeout(() => {
+      gallery.forEach((item, id) => {
+        item.style.transform = `translate(${id * perProj2}%, ${id * perProj2}%)`
+        item.style.zIndex = gallery.length - id
+      }
+      )
+
+      if (parent.classList.contains('graphs')) {
+        project2Images = gallery
+      } else if (parent.classList.contains('geoportal')) {
+        project1Images = gallery
+
+      }
+
+      leftArrow.forEach(item => item.addEventListener('click', prevPhoto))
+
+    }, 500)
+  }
+
 
 
   const rightArrow = [...document.querySelectorAll('.arrow-right')]
+  const nextPhoto = function () {
+    const parent = this.parentNode
 
-  rightArrow.forEach(item => item.addEventListener('click', function () {
-    let parent = this.parentNode
+    let gallery;
 
-    parent.classList.contains('geoportal') ? activePhotos.geoportal = activePhotos.geoportal + 1 : null
-    activePhotos.geoportal > geoportalImages.length - 1 ? activePhotos.geoportal = 0 : null
+    if (parent.classList.contains('graphs')) {
+      gallery = project2Images
+    } else if (parent.classList.contains('geoportal')) {
+      gallery = project1Images
 
-    parent.classList.contains('graphs') ? activePhotos.graphs = activePhotos.graphs + 1 : null
-    activePhotos.graphs > graphImages.length - 1 ? activePhotos.graphs = 0 : null
-
-
-    photoGallery1.src = geoportalImages[activePhotos.geoportal]
-    photoGallery2.src = graphImages[activePhotos.graphs]
-
-  }))
+    }
 
 
+
+    gallery[0].style.transform = `translate(0%, -20%)`
+    rightArrow.forEach(item => item.removeEventListener('click', nextPhoto))
+    let current = gallery[0]
+    gallery.splice(0, 1)
+    gallery = [...gallery, current]
+
+
+    setTimeout(() => {
+      gallery.forEach((item, id) => {
+        item.style.transform = `translate(${id * perProj2}%, ${id * perProj2}%)`
+        item.style.zIndex = gallery.length - id
+      }
+      )
+
+      if (parent.classList.contains('graphs')) {
+        project2Images = gallery
+      } else if (parent.classList.contains('geoportal')) {
+        project1Images = gallery
+
+      }
+
+      rightArrow.forEach(item => item.addEventListener('click', nextPhoto))
+
+    }, 500)
+  }
+
+  leftArrow.forEach(item => item.addEventListener('click', prevPhoto))
+
+  rightArrow.forEach(item => item.addEventListener('click', nextPhoto))
 
 }
 
