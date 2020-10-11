@@ -158,5 +158,6 @@ const animate2 = () => {
 init2()
 animate2()
 
+let proportion = 200
 
-setTimeout(() => { canvas2.style.opacity = 1 }, 5000)
+setTimeout(() => { canvas2.style.opacity = 1 }, (canvas.width * 1000) / proportion)
