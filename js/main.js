@@ -211,6 +211,7 @@ const showMoreInfo = () => {
   const projectsInfo = [...document.querySelectorAll('.about-project')]
 
   projects.forEach(item => item.addEventListener('click', function () {
+    this.classList.toggle('show')
     projectsInfo[projects.findIndex(item2 => item2 === item)].classList.toggle('show')
   }))
 
