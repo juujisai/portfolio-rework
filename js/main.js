@@ -3,6 +3,7 @@ const navigation = () => {
   const navText = document.querySelector('nav.mobile-nav')
   const navElipse = document.querySelector('.ellipse-nav')
   document.querySelector('.hamburger').addEventListener('click', function () {
+    document.querySelector('.hamburger').classList.toggle('animate')
     navText.classList.toggle('hidden')
     navElipse.classList.toggle('hidden')
   })
