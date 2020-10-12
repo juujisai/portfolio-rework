@@ -240,6 +240,17 @@ const showMoreInfo = () => {
   )
 
 
+  let project3Images = [...document.querySelectorAll('.photo-gallery.mclaren img')]
+  const perProj3 = 15 / (project3Images.length - 1)
+  // console.log(project2Images)
+  project3Images.forEach((item, id) => {
+    item.style.transform = `translate(${id * perProj3}%, ${id * perProj3}%)`
+    item.style.zIndex = project3Images.length - id
+  }
+  )
+
+
+
 
   const leftArrow = [...document.querySelectorAll('.arrow-left')]
 
@@ -254,7 +265,8 @@ const showMoreInfo = () => {
       gallery = project2Images
     } else if (parent.classList.contains('geoportal')) {
       gallery = project1Images
-
+    } else if (parent.classList.contains('mclaren')) {
+      gallery = project3Images
     }
 
     gallery[gallery.length - 1].style.zIndex = gallery.length + 1
@@ -278,6 +290,8 @@ const showMoreInfo = () => {
       } else if (parent.classList.contains('geoportal')) {
         project1Images = gallery
 
+      } else if (parent.classList.contains('mclaren')) {
+        project3Images = gallery
       }
 
       leftArrow.forEach(item => item.addEventListener('click', prevPhoto))
@@ -298,6 +312,8 @@ const showMoreInfo = () => {
     } else if (parent.classList.contains('geoportal')) {
       gallery = project1Images
 
+    } else if (parent.classList.contains('mclaren')) {
+      gallery = project3Images
     }
 
 
@@ -321,6 +337,8 @@ const showMoreInfo = () => {
       } else if (parent.classList.contains('geoportal')) {
         project1Images = gallery
 
+      } else if (parent.classList.contains('mclaren')) {
+        project3Images = gallery
       }
 
       rightArrow.forEach(item => item.addEventListener('click', nextPhoto))
