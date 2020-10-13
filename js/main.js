@@ -215,34 +215,41 @@ const showMoreInfo = () => {
     projectsInfo[projects.findIndex(item2 => item2 === item)].classList.toggle('show')
   }))
 
-  let activePhotos = {
-    geoportal: 0,
-    graphs: 0,
-  }
+  // 1
 
-  // const photoGallery1 = document.querySelector('.geoportal-gallery')
+  let projectImages = [...document.querySelectorAll('.photo-gallery.portfolio img')]
+  const perProj = 15 / (projectImages.length - 1)
+  projectImages.forEach((item, id) => {
+    item.style.transform = `translate(${id * perProj}%, ${id * perProj}%)`
+    item.style.zIndex = projectImages.length - id
+  }
+  )
+
+
+  // 2
+
   let project1Images = [...document.querySelectorAll('.photo-gallery.geoportal img')]
   const perProj1 = 15 / (project1Images.length - 1)
-
   project1Images.forEach((item, id) => {
     item.style.transform = `translate(${id * perProj1}%, ${id * perProj1}%)`
     item.style.zIndex = project1Images.length - id
   }
   )
-  // const photoGallery2 = document.querySelector('.graph-gallery')
+
+  // 3
+
   let project2Images = [...document.querySelectorAll('.photo-gallery.graphs img')]
   const perProj2 = 15 / (project2Images.length - 1)
-  // console.log(project2Images)
   project2Images.forEach((item, id) => {
     item.style.transform = `translate(${id * perProj2}%, ${id * perProj2}%)`
     item.style.zIndex = project2Images.length - id
   }
   )
 
+  //4
 
   let project3Images = [...document.querySelectorAll('.photo-gallery.mclaren img')]
   const perProj3 = 15 / (project3Images.length - 1)
-  // console.log(project2Images)
   project3Images.forEach((item, id) => {
     item.style.transform = `translate(${id * perProj3}%, ${id * perProj3}%)`
     item.style.zIndex = project3Images.length - id
@@ -267,6 +274,8 @@ const showMoreInfo = () => {
       gallery = project1Images
     } else if (parent.classList.contains('mclaren')) {
       gallery = project3Images
+    } else if (parent.classList.contains('portfolio')) {
+      gallery = projectImages
     }
 
     gallery[gallery.length - 1].style.zIndex = gallery.length + 1
@@ -292,6 +301,8 @@ const showMoreInfo = () => {
 
       } else if (parent.classList.contains('mclaren')) {
         project3Images = gallery
+      } else if (parent.classList.contains('portfolio')) {
+        projectImages = gallery
       }
 
       leftArrow.forEach(item => item.addEventListener('click', prevPhoto))
@@ -314,6 +325,8 @@ const showMoreInfo = () => {
 
     } else if (parent.classList.contains('mclaren')) {
       gallery = project3Images
+    } else if (parent.classList.contains('portfolio')) {
+      gallery = projectImages
     }
 
 
@@ -339,6 +352,8 @@ const showMoreInfo = () => {
 
       } else if (parent.classList.contains('mclaren')) {
         project3Images = gallery
+      } else if (parent.classList.contains('portfolio')) {
+        projectImages = gallery
       }
 
       rightArrow.forEach(item => item.addEventListener('click', nextPhoto))
