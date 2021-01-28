@@ -257,6 +257,15 @@ const showMoreInfo = () => {
   )
 
 
+  //5
+
+  let project4Images = [...document.querySelectorAll('.photo-gallery.cappuccino img')]
+  const perProj4 = 15 / (project4Images.length - 1)
+  project4Images.forEach((item, id) => {
+    item.style.transform = `translate(${id * perProj4}%, ${id * perProj4}%)`
+    item.style.zIndex = project4Images.length - id
+  }
+  )
 
 
   const leftArrow = [...document.querySelectorAll('.arrow-left')]
@@ -276,6 +285,8 @@ const showMoreInfo = () => {
       gallery = project3Images
     } else if (parent.classList.contains('portfolio')) {
       gallery = projectImages
+    } else if (parent.classList.contains('cappuccino')) {
+      gallery = project4Images
     }
 
     gallery[gallery.length - 1].style.zIndex = gallery.length + 1
@@ -303,6 +314,8 @@ const showMoreInfo = () => {
         project3Images = gallery
       } else if (parent.classList.contains('portfolio')) {
         projectImages = gallery
+      } else if (parent.classList.contains('cappuccino')) {
+        project4Images = gallery
       }
 
       leftArrow.forEach(item => item.addEventListener('click', prevPhoto))
@@ -327,6 +340,8 @@ const showMoreInfo = () => {
       gallery = project3Images
     } else if (parent.classList.contains('portfolio')) {
       gallery = projectImages
+    } else if (parent.classList.contains('cappuccino')) {
+      gallery = project4Images
     }
 
 
@@ -354,6 +369,8 @@ const showMoreInfo = () => {
         project3Images = gallery
       } else if (parent.classList.contains('portfolio')) {
         projectImages = gallery
+      } else if (parent.classList.contains('cappuccino')) {
+        project4Images = gallery
       }
 
       rightArrow.forEach(item => item.addEventListener('click', nextPhoto))
