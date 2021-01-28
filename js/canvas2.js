@@ -5,6 +5,7 @@ const c = canvas2.getContext('2d')
 // let width = window.innerWidth
 // let height = window.innerHeight
 
+let circleNumber = (window.innerWidth * window.innerHeight) / 1400
 
 canvas2.width = width
 canvas2.height = height
@@ -26,6 +27,7 @@ window.addEventListener('resize', () => {
   width = window.innerWidth
   height = window.innerHeight
 
+  circleNumber = (window.innerWidth * window.innerHeight) / 1400
 
   canvas2.width = width
   canvas2.height = height
@@ -110,10 +112,10 @@ let colors = ['#41aea9', '#0f3057', '#008891', '#e8ffff', '#a6f6f1']
 let circles = []
 const init2 = () => {
   circles = []
-  for (let i = 0; i < 2000; i++) {
+  for (let i = 0; i < circleNumber; i++) {
     let dx = (Math.random() * 4 - 2)
     let dy = (Math.random() * 4 - 2)
-    let r = Math.floor(Math.random() * (25 - 15) + 15)
+    let r = Math.floor(Math.random() * (35 - 15) + 15)
     let x = Math.random() * (canvas.width - 2 * r) + r
     let y = Math.random() * (canvas.height - 2 * r) + r
     circles.push(new Circle2(x, y, dx, dy, r, colors[Math.floor(Math.random() * 5)]))
