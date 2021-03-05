@@ -194,7 +194,6 @@ class Portfolio {
       content: '<i class="fas fa-sort-up"></i>'
     }).create()
 
-    console.log(spanToolLeft)
     photoGallery.appendChild(spanToolLeft)
     photoGallery.appendChild(spanToolRight)
 
@@ -253,3 +252,94 @@ let portfolioDataCont = portfolioData
 portfolioData.forEach((item, i) => {
   new Portfolio({ ...item }).create()
 })
+
+
+
+
+const showMoreInfo = (portfolioDataCont) => {
+  // show more info
+  const projects = [...document.querySelectorAll('.short-project')]
+  const projectsInfo = [...document.querySelectorAll('.about-project')]
+
+  projects.forEach(item => item.addEventListener('click', function () {
+    this.classList.toggle('show')
+    projectsInfo[projects.findIndex(item2 => item2 === item)].classList.toggle('show')
+  }))
+
+
+  // switch images //////////////////////////////////////////////////////////////////////////////////////////////
+
+  portfolioDataCont.forEach(item => {
+
+
+    // show gallery - one higher than the other
+    let allImagesFromThisProject = [...document.querySelectorAll(`.photo-gallery.${item.photoGalleryName} img`)]
+    const perProj = 15 / (allImagesFromThisProject.length - 1)
+
+
+    allImagesFromThisProject.forEach((item, id) => {
+      item.style.transform = `translate(${id * perProj}%, ${id * perProj}%)`
+      item.style.zIndex = allImagesFromThisProject.length - id
+    })
+
+    // swap left
+    const leftArrow = document.querySelector(`.photo-gallery.${item.photoGalleryName} .arrow-left`)
+    const prevPhoto = function () {
+      let gallery = allImagesFromThisProject
+
+      gallery[gallery.length - 1].style.zIndex = gallery.length + 1
+
+      gallery[gallery.length - 1].style.transform = `translate(0%, -20%)`
+
+      leftArrow.removeEventListener('click', prevPhoto)
+
+      let current = gallery[gallery.length - 1]
+      gallery.splice(gallery.length - 1, 1)
+      gallery = [current, ...gallery,]
+
+      setTimeout(() => {
+        gallery.forEach((item, id) => {
+          item.style.transform = `translate(${id * perProj}%, ${id * perProj}%)`
+          item.style.zIndex = gallery.length - id
+        }
+        )
+        allImagesFromThisProject = gallery
+        leftArrow.addEventListener('click', prevPhoto)
+      }, 500)
+    }
+    leftArrow.addEventListener('click', prevPhoto)
+
+
+    // swap right
+    const rightArrow = document.querySelector(`.photo-gallery.${item.photoGalleryName} .arrow-right`)
+    const nextPhoto = function () {
+
+      let gallery = allImagesFromThisProject;
+
+      gallery[0].style.transform = `translate(0%, -20%)`
+      rightArrow.removeEventListener('click', nextPhoto)
+      let current = gallery[0]
+      gallery.splice(0, 1)
+      gallery = [...gallery, current]
+
+      setTimeout(() => {
+        gallery.forEach((item, id) => {
+          item.style.transform = `translate(${id * perProj}%, ${id * perProj}%)`
+          item.style.zIndex = gallery.length - id
+        }
+        )
+        allImagesFromThisProject = gallery
+
+        rightArrow.addEventListener('click', nextPhoto)
+
+      }, 500)
+
+    }
+
+    rightArrow.addEventListener('click', nextPhoto)
+
+
+  })
+}
+
+showMoreInfo(portfolioDataCont)
