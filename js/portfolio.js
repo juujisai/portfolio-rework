@@ -27,7 +27,7 @@ const portfolioData = [
     bigImg: "./images/bento.JPG",
     name: 'Bento-shop',
     photoGalleryName: 'bento',
-    photoGalleryImages: ['./images/bento1.JPG', './images/bento2.JPG', './images/bento3.JPG', './images/bento4.JPG'],
+    photoGalleryImages: ['./images/bento1.jpg', './images/bento2.jpg', './images/bento3.jpg', './images/bento4.jpg'],
     photoGalleryImagesClassName: 'bento-gallery',
     liveLink: 'https://https://bento-shop.netlify.app/',
     githubLink: 'https://https://github.com/juujisai/bento-store',
