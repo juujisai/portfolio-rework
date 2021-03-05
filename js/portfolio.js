@@ -221,7 +221,7 @@ class Portfolio {
     let iconsIcon2 = new NewElement({
       element: 'div',
       className: 'github-link',
-      content: `<a href=${this.githubLink} target='_blank'><i class="fab fa-chrome"></i></a>`,
+      content: `<a href=${this.githubLink} target='_blank'><i class="fab fa-github"></i></a>`,
     }).create()
     icons.appendChild(iconsIcon2)
 
