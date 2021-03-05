@@ -24,10 +24,10 @@ const portfolioData = [
   },
   {
     id: 2,
-    bigImg: "./images/bento.jpg",
+    bigImg: "./images/bento.JPG",
     name: 'Bento-shop',
     photoGalleryName: 'bento',
-    photoGalleryImages: ['./images/bento1.jpg', './images/bento2.jpg', './images/bento3.jpg', './images/bento4.jpg'],
+    photoGalleryImages: ['./images/bento1.JPG', './images/bento2.JPG', './images/bento3.JPG', './images/bento4.JPG'],
     photoGalleryImagesClassName: 'bento-gallery',
     liveLink: 'https://https://bento-shop.netlify.app/',
     githubLink: 'https://https://github.com/juujisai/bento-store',
