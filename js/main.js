@@ -67,36 +67,20 @@ const svgIcons = () => {
     let stackDiv = [...document.querySelectorAll('.cart-cont .cart')]
 
 
-    scrollValue >= svgOffsetTop[0] - scrollValue / 4 ? stackDiv[0].classList.remove('left') : stackDiv[0].classList.add('left')
-    scrollValue >= svgOffsetTop[1] - scrollValue / 4 ? stackDiv[1].classList.remove('right') : stackDiv[1].classList.add('right')
-    scrollValue >= svgOffsetTop[2] - scrollValue / 4 ? stackDiv[2].classList.remove('left') : stackDiv[2].classList.add('left')
-    scrollValue >= svgOffsetTop[3] - scrollValue / 4 ? stackDiv[3].classList.remove('right') : stackDiv[3].classList.add('right')
-    scrollValue >= svgOffsetTop[4] - scrollValue / 4 ? stackDiv[4].classList.remove('left') : stackDiv[4].classList.add('left')
-    scrollValue >= svgOffsetTop[5] - scrollValue / 4 ? stackDiv[5].classList.remove('right') : stackDiv[5].classList.add('right')
-    scrollValue >= svgOffsetTop[6] - scrollValue / 4 ? stackDiv[6].classList.remove('left') : stackDiv[6].classList.add('left')
+    for (let i = 0; i < svgOffsetTop.length; i++) {
+      if (i % 2 === 0) {
+        scrollValue >= svgOffsetTop[i] - scrollValue / 4 ? stackDiv[i].classList.remove('left') : stackDiv[i].classList.add('left')
+      } else {
+        scrollValue >= svgOffsetTop[i] - scrollValue / 4 ? stackDiv[i].classList.remove('right') : stackDiv[i].classList.add('right')
+      }
 
 
-    if (scrollValue >= svgOffsetTop[0] - windowHeight / 2) {
-      animateSVGSOffset(1)
+      if (scrollValue >= svgOffsetTop[i] - windowHeight / 2) {
+        animateSVGSOffset(i + 1)
+      }
+
     }
-    if (scrollValue >= svgOffsetTop[1] - windowHeight / 2) {
-      animateSVGSOffset(2)
-    }
-    if (scrollValue >= svgOffsetTop[2] - windowHeight / 2) {
-      animateSVGSOffset(3)
-    }
-    if (scrollValue >= svgOffsetTop[3] - windowHeight / 2) {
-      animateSVGSOffset(4)
-    }
-    if (scrollValue >= svgOffsetTop[4] - windowHeight / 2) {
-      animateSVGSOffset(5)
-    }
-    if (scrollValue >= svgOffsetTop[5] - windowHeight / 2) {
-      animateSVGSOffset(6)
-    }
-    if (scrollValue >= svgOffsetTop[6] - windowHeight / 2) {
-      animateSVGSOffset(7)
-    }
+
   })
 
   const animateSVGSOffset = (number) => {
